@@ -145,16 +145,16 @@ Abra o arquivo index da pasta users e digite o seguinte código:
 	switch($method)
 	{
 		case 'GET':
-			$result = '{ "tx_message": "Método GET invodado."}';
+			$result = '{ "tx_message": "Método GET invocado."}';
 			break;
 		case 'POST':
-			$result = '{ "tx_message": "Método POST invodado."}';
+			$result = '{ "tx_message": "Método POST invocado."}';
 			break;
 		case 'PUT':
-			$result = '{ "tx_message": "Método PUT invodado."}';
+			$result = '{ "tx_message": "Método PUT invocado."}';
 			break;
 		case 'DELETE':
-			$result = '{ "tx_message": "Método DELETE invodado."}';
+			$result = '{ "tx_message": "Método DELETE invocado."}';
 			break;
 		default:
 			header("HTTP/1.0 405 Method Not Allowed");
@@ -190,7 +190,7 @@ Abra o novo index.php, digite o código abaixo e salve o arquivo.
 	switch($method)
 	{
 		case 'POST':
-			$result = '{ "tx_message": "Método POST invodado."}';
+			$result = '{ "tx_message": "Método POST invocado."}';
 			break;
 		default:
 			header("HTTP/1.0 405 Method Not Allowed");
@@ -203,3 +203,18 @@ Abra o novo index.php, digite o código abaixo e salve o arquivo.
 
 
 # Operações com Arrays
+
+Os arrays em PHP são compostos por valores e chaves, como um hashtable ou dicionário. Sua sintaxe é demonstrada logo abaixo:
+
+```
+array(
+  key1  => value,
+  key2  => value,
+  key3  => value
+)
+```
+
+...
+
+
+
