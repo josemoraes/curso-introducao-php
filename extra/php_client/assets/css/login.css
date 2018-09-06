@@ -1,0 +1,170 @@
+html{ 
+	height: 100%; 
+}
+
+html *{
+	/* 
+	* Essa regra permite que o padding (preenchimento) de todos os elementos 
+	* filhos do elemento HTML, não interfiram no largura, ou altura, e mantém
+	* o preenchimento (padding), contido no próprio elemento.
+	*/
+	box-sizing: border-box; 
+}
+
+body{
+	/* 
+	* Por padrão, o elemento BODY vem com margin e padding pré-definido. É uma convenção
+	* "zerar" esses valores para que não interfiram no layout da página.
+	*/
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	background-color: #2a7cbb;
+	font-family: sans-serif;
+	position: relative;
+	height: inherit;
+}
+
+/* 
+* É uma convenção utilizar containers, para manter elementos dentro de um
+* alinhamento geral. Geralmente define-se o viewport (com a regra, width)
+* e insere uma margem automática nas laterais, para criar um respiro no 
+* conteúdo que ficará dentro do container.
+*/
+.container{
+	width: 1200px;
+	margin: 0 auto;
+	float: none;
+	clear: both;
+	padding: 5px 15px;
+}
+
+fieldset{
+	max-width: 500px;
+	width: 100%;
+	margin: 55px auto 75px;
+	float: none;
+	clear: both;
+	border: none;
+	background-color: #FFF;
+	padding: 2.5em 2.5em 1em;
+	box-shadow: 0 5px 20px 0 rgba(0,0,0,.3);
+}
+
+fieldset h1{
+	text-align: center;
+	text-transform: uppercase;
+	margin-top: 0;
+}
+
+fieldset form label{
+	display: block;
+	color: #666;
+	font-size: .8em;
+	font-weight: 600;
+	margin-top: 15px;
+	margin-bottom: .25em;
+	text-transform: uppercase;
+}
+
+/* 
+* Como apresentado no seletor abaixo, é possível definir as regras de estilo
+* de forma específica utilizando inclusive valores de atributos. Nesse caso,
+* programos um seletor que possui a seguinte declaração:
+* "Todo elemento input que contenha o atributo type e possua os valores email, ou password, que estejam
+* dentro de um elemento form, que por sua vez esteja dentro de um elemento fieldset, devem possuir as
+* regras definidas a seguir..."
+*/
+form .form-field{
+	color: #333;
+	border: 2px solid #cdcdcd;
+	border-radius: .25em;
+	font-size: .9em;
+	width: 100%;
+	padding: .6em .8em;
+}
+
+fieldset form input[type="submit"]{
+	width: 100%;
+	background-color: #4db955;
+	border: none;
+	border-radius: 3px;
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	font-size: .8em;
+	font-weight: 700;
+	padding: 1.3em 2.125em;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	vertical-align: middle;
+	white-space: nowrap;
+	margin: 25px 0;
+}
+
+/* 
+* Aqui foram utilizados pseudo-classes para indicar em quais momentos a cor do botão
+* de submit, deveria ser alterada. Para saber mais sobre pseudo-classes, confira:
+* https://www.w3schools.com/css/css_pseudo_classes.asp
+*/
+fieldset form input[type="submit"]:focus,
+fieldset form input[type="submit"]:hover {
+	background-color: #46b14e;
+}
+
+
+footer{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 60px;
+	background-color: #3e4147;
+	color: #FFF;
+	padding-top: 25px;
+	text-align: center;
+}
+
+#form-cadastro{ 
+	display: none; 
+}
+
+/* Aqui, o seletor "ataca" os elementos que sejam da tag 'a' (link) e contenham a classe 'action-link' */
+a.action-link{
+    margin: 20px 0 0;
+    text-align: right;
+    display: block;
+}
+
+/* Toast */
+.toast {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #333; /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 45%; /* Center the hayamax-alert */
+    bottom: 100px; /* 30px from the bottom */
+}
+
+/* Show the hayamax-alert when clicking on a button (class added with JavaScript) */
+.toast.show {
+    visibility: visible; /* Show the hayamax-alert */
+
+/* Add animation: Take 0.5 seconds to fade in and out the hayamax-alert. 
+However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+.toast .close{
+	padding: 0 5px;
+	margin-left: 15px;
+	color: #F00;
+	cursor: pointer;
+}
