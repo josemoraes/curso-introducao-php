@@ -18,6 +18,7 @@
 			<ul>
 				<li><h1 class="logo">Minhas Tarefas</h1></li>
 				<li class="right"><a href="controller/users/logout.php">logout</a></li>
+				<li class="right"><a href="#" id="new-task" data-ref="new-task" class="btn">Nova Tarefa</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -56,6 +57,35 @@
 	<footer>
 		(SEU NOME). 2018. Introdução à Programação Web com PHP
 	</footer>
+	
+	<div class="modal" data-ref="new-task">
+		<span class="close">X</span>
+		<div class="modal-wrapper">
+			<div class="modal-content">
+				<h2 class="page-title">Cadastrar Nova Tarefa</h2>
+				<form action="controller/tasks/add.php" method="POST">
+					<label for="tx_title">Título</label>
+					<input type="text" id="tx_title" name="tx-title" class="form-field" required>
+					<br>
+					<label for="tx_description">Descrição</label>
+					<textarea name="tx_description" id="tx_description" class="form-field" cols="30" rows="10"></textarea>
+					<br>
+					<label for="ch_tag">Em qual estado a tarefa está?</label><br>
+					<select name="ch_tag" id="ch_tag" class="form-field">
+						<option value="todo">Não foi feita</option>
+						<option value="doing">Estou fazendo</option>
+						<option value="done">Já concluí</option>
+					</select>
+					<br>
+					<label for="dt_deadline">Prazo para conclusão</label>
+					<input type="date" name="dt_deadline" id="dt_deadline" class="form-field">
+					<br>
+					<input type="submit" class="btn right" value="Salvar Tarefa">
+				</form>
+			</div>
+		</div>	
+	</div>
+
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/dashboard.js"></script>
 </body>

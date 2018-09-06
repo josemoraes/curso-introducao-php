@@ -4,7 +4,7 @@ include_once "../../model/Request.php"; # Importo a classe, para criar objeto de
 
 $dadosDoFormulario 	= $_POST; 
 
-$serverRequest 		= new Request('http://localhost/php_server/login/');
+$serverRequest 		= new Request('http://appserver.local/login/');
 
 $resposta 			= $serverRequest->doPost($dadosDoFormulario);
 
@@ -16,14 +16,14 @@ switch ($resposta['code']) {
 		$_SESSION['user']['tx_name'] 	= $dados->tx_name;
 		$_SESSION['user']['tx_email'] 	= $dados->tx_email;
 
-		header('Location: http://localhost/php_server/dashboard.php');
+		header('Location: http://appcurso.local/dashboard.php');
 		break;
 	
 	case 401:
 		$dados = json_decode($resposta['result']);
-		header('Location: http://localhost/php_server/index.php?msg='.$dados->tx_message.'');
+		header('Location: http://appcurso.local/index.php?msg='.$dados->tx_message.'');
 		break;
 	default:
-		header('Location: http://localhost/php_server/');
+		header('Location: http://appcurso.local/');
 		break;
 }
