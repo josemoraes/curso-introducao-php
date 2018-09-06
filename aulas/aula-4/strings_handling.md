@@ -1,10 +1,15 @@
-# Vamos praticar - Manipulação de Strings em PHP
+# Manipulação de Strings em PHP
 
-Acesse o diretório `./xampp/htdocs` e crie uma pasta com o nome `aula_5`.
-Nessa aula abordaremos as funções de string:
+Abra o arquivo `index.php` do diretório `./xampp/htdocs/php_server/login`.
+
+Altere a linha de código de dentro do case `POST` para `$result = request_post();`.
+
+Após o comando `echo($result);`, crie o método `function request_post(){}`. Quando este arquivo receber uma requisição POST, essa função será executada.
+
+Dentro dessa função, testaremos alguns recursos do PHP para manipular strings, tais como:
 
 - [explode](#explode);
-- [strtoupper e strtolower](#strtoupper-e-strtolower);
+- [strtoupper, strtolower, lcfirst e ucwords](#strtoupper-e-strtolower);
 - [substr](#substr);
 - [strlen](#strlen);
 - [str_replace](#str_replace).
@@ -12,7 +17,7 @@ Nessa aula abordaremos as funções de string:
 
 ## explode
 
-Na pasta `aula_5`, crie um arquivo chamado `explode.php`; copie e cole o código abaixo:
+O código abaixo demonstra um dexemplo do uso do método `explode()`:
 
 ``` php
 
@@ -30,10 +35,8 @@ $texto = 'Nescau é melhor do que Toddy';
 /* Aqui estamos indicando que o texto deve ser dividido toda vez que for encontrado o caractere espaço */
 $textoEmArray = explode(' ', $texto);
 
-echo "<pre>";
 var_dump($texto);
 var_export($textoEmArray);
-echo "</pre>";
 
 /*
 * var_dump: Esta função mostrará uma representação estruturada sobre uma ou mais expressões, 
@@ -45,18 +48,42 @@ echo "</pre>";
 
 ``` 
 
-Salve o arquivo; inicialize o Apache pelo Xampp; acesse a URL `http://localhost/aula_5/explode.php` e veja se o resultado é semelhante ao da Figura 1.
+Copie o exemplo dentro da função "request_post", salve e execute o arquivo para teste.
 
-| ![Figura 1 - Explode](/aulas/aula-5/img/figura_1.png) | 
-|:--:| 
-| **Figura 1 - Explode** |
+Note que foi retornado um erro. Isso realmente era para acontecer, pois não alteramos o tipo de retorno para a requisição. Havíamos programado anteriormente para retornar um documento JSON, porém nosso código atual utiliza os comandos `var_dump` e `var_export` para "escrever na saída" o valor das variáveis e alguns detalhes a mais.
+
+Comente a linha em que configuramos o tipo de retorno no header, utilizando `//`.
+
+``` php
+//header('Content-Type: application/json');
+```
+
+Também é possível fazer comentários em blocos utilizando `/* ... */`. 
+
+Salve e teste novamente.
+
+Agora temos a seguinte saída:
+
+```
+string(29) "Nescau é melhor do que Toddy"
+array (
+  0 => 'Nescau',
+  1 => 'é',
+  2 => 'melhor',
+  3 => 'do',
+  4 => 'que',
+  5 => 'Toddy',
+)
+``` 
 
 Para mais detalhes sobre a função, consulte: [Manual do PHP - Explode](http://php.net/manual/pt_BR/function.explode.php)
 
 
-## strtoupper e strtolower
+## strtoupper, strtolower, lcfirst e ucwords
 
-Na pasta `aula_5`, crie um arquivo chamado `strtoupper-strtolower.php`; copie e cole o código abaixo:
+Apague todo o conteúdo dentro da função `request_post`.
+
+Agora vamos entender como as funções `strtoupper()`, `strtolower`, `lcfirst` e `ucwords` operam. Um exemplo é demonstrado logo abaixo:
 
 ``` php
 
@@ -65,10 +92,9 @@ Na pasta `aula_5`, crie um arquivo chamado `strtoupper-strtolower.php`; copie e 
 /*
 -----------------------------------------------------------------------
 strtoupper: Converte string em maiúsculas. Retorna a string convertida.
------------------------------------------------------------------------
-
------------------------------------------------------------------------
 strtolower: Converte string em minúsculas. Retorna a string convertida.
+lcfirst: Converte o primeiro caractere de uma string para minúscula
+ucwords: Converte o primeiro caractere de cada palavra em uma string para minúscula.
 -----------------------------------------------------------------------
 */
 
@@ -76,35 +102,65 @@ $textoMinusculo = 'lorem ipsum dolor sit amet, consectetur adipisicing';
 $textoMisturado = 'LoRem Ipsum DOLOR sit amet, conSECTetur ADIPISICING';
 $textoMaiusculo = 'LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING';
 
-/* Impressão dos textos em maiúsculo */
-echo strtoupper($textoMinusculo);
 echo '<br>';
-echo strtoupper($textoMisturado);
+echo 'Minúsculo: '.$textoMinusculo;
+echo '<br>';
+echo 'Misto: '.$textoMisturado;
+echo '<br>';
+echo 'Maiúsculo: '.$textoMaiusculo;
+echo '<br><br>';
 
+/* Impressão dos textos em maiúsculo */
+echo "strtoupper em Minúsculo: ".strtoupper($textoMinusculo);
+echo '<br>';
+echo "strtoupper em Misto: ".strtoupper($textoMisturado);
 echo '<br><br>';
 
 /* Impressão dos textos em minúsculo */
-
-echo strtolower($textoMaiusculo);
 echo '<br>';
-echo strtolower($textoMisturado);
+echo "strtolower em Maiúsculo: ".strtolower($textoMaiusculo);
+echo '<br>';
+echo "strtolower em Misto: ".strtolower($textoMisturado);
+echo '<br>';
+		
+/* Primeiro caractere minúsculo */
+echo '<br>';
+echo "lcfirst em Maiúsculo: ".lcfirst($textoMaiusculo);
+echo '<br>';
+echo "ucwords em Minúsculo: ".ucwords($textoMinusculo);
 
 ```
 
-Salve o arquivo; inicialize o Apache pelo Xampp; acesse a URL `http://localhost/aula_5/strtoupper-strtolower.php` e veja se o resultado é semelhante ao da Figura 2.
+Note que utilizamos o caractere `.` para concatenar valores de string. Salve e teste o script. A saída será semelhante ao código abaixo:
 
-| ![Figura 2 - strtoupper e strtolower](/aulas/aula-5/img/figura_2.png) | 
-|:--:| 
-| **Figura 2 - strtoupper e strtolower** |
+```
+<br>Minúsculo: lorem ipsum dolor sit amet, consectetur adipisicing
+<br>Misto: LoRem Ipsum DOLOR sit amet, conSECTetur ADIPISICING
+<br>Maiúsculo: LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING
+<br>
+<br>strtoupper em Minúsculo: LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING
+<br>strtoupper em Misto: LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING
+<br>
+<br>
+<br>strtolower em Maiúsculo: lorem ipsum dolor sit amet, consectetur adipisicing
+<br>strtolower em Misto: lorem ipsum dolor sit amet, consectetur adipisicing
+<br>
+<br>lcfirst em Maiúsculo: lOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING
+<br>ucwords em Minúsculo: Lorem Ipsum Dolor Sit Amet, Consectetur Adipisicing
+```
 
-Para mais detalhes sobre a função, consulte: 
+Para mais detalhes sobre essas funções, consulte: 
 - [Manual do PHP - strtoupper](http://php.net/manual/pt_BR/function.strtoupper.php)
 - [Manual do PHP - strtolower](http://php.net/manual/pt_BR/function.strtolower.php)
+- [Manual do PHP - lcfirst](http://php.net/manual/pt_BR/function.lcfirst.php)
+- [Manual do PHP - ucwords](http://php.net/manual/pt_BR/function.ucwords.php)
 
 
 ## substr
 
-Na pasta `aula_5`, crie um arquivo chamado `substr.php`; copie e cole o código abaixo:
+Apague todo o conteúdo dentro da função `request_post`.
+
+Agora vamos entender como a função `substr()` opera. Um exemplo é demonstrado logo abaixo: 
 
 ``` php
 
@@ -145,14 +201,21 @@ echo '<br>';
 echo substr("abcdef", -3, 1); // retorna "d"
 echo '<br>';
 
-
 ```
 
-Salve o arquivo; inicialize o Apache pelo Xampp; acesse a URL `http://localhost/aula_5/substr.php` e veja se o resultado é semelhante ao da Figura 3.
+Salve e teste o script. Agora temos a seguinte saída:
 
-| ![Figura 3 - substr](/aulas/aula-5/img/figura_3.png) | 
-|:--:| 
-| **Figura 3 - substr** |
+```
+bcdef
+<br>bcd
+<br>abcd
+<br>abcdef
+<br>f
+<br>f
+<br>ef
+<br>d
+<br>
+```
 
 Para mais detalhes sobre a função, consulte: 
 - [Manual do PHP - substr](http://php.net/manual/pt_BR/function.substr.php)
@@ -160,7 +223,14 @@ Para mais detalhes sobre a função, consulte:
 
 ## strlen
 
-Na pasta `aula_5`, crie um arquivo chamado `strlen.php`; copie e cole o código abaixo:
+Uma string pode ser considerar um array de caracteres, portanto, várias de suas operações se assemelham a de vetores.
+
+Apague todo o conteúdo dentro da função `request_post`.
+
+Agora vamos entender como a função `strlen()` opera. Copie a função do exemplo abaixo antes da função `request_post`.
+
+Copie o restante do código dentro da função `request_post`.
+
 
 ``` php
 
@@ -168,11 +238,8 @@ Na pasta `aula_5`, crie um arquivo chamado `strlen.php`; copie e cole o código 
 
 /*
 -----------------------------------------------------------------------
-
 strlen: Retorna o tamanho de uma string
-
 declaração: int strlen ( string $string )
-
 -----------------------------------------------------------------------
 */
 
@@ -201,11 +268,16 @@ function verificaTamanho($str = ''){
 
 ```
 
-Salve o arquivo; inicialize o Apache pelo Xampp; acesse a URL `http://localhost/aula_5/strlen.php` e veja se o resultado é semelhante ao da Figura 4.
+Salve e execute o script. Vamos obter a seguinte saída:
 
-| ![Figura 4 - strlen](/aulas/aula-5/img/figura_4.png) | 
-|:--:| 
-| **Figura 4 - strlen** |
+```
+9
+<br>81
+<br>Erro. Esse campo aceita apenas 20 caracteres. Foram passados 21 caracteres
+<br>Texto com tamanho correto. Foram passados 2 caracteres
+```
+
+Apague a função copiada e o bloco de código de dentro da função `request_post`.
 
 Para mais detalhes sobre a função, consulte: 
 - [Manual do PHP - strlen](http://php.net/manual/pt_BR/function.strlen.php)
@@ -213,7 +285,8 @@ Para mais detalhes sobre a função, consulte:
 
 ## str_replace
 
-Na pasta `aula_5`, crie um arquivo chamado `str_replace.php`; copie e cole o código abaixo:
+Agora vamos entender como a função `str_replace()` opera. Um exemplo de seu uso é ilustrado abaixo:
+
 
 ``` php
 
@@ -251,11 +324,17 @@ echo $novafrase;
 
 ```
 
-Salve o arquivo; inicialize o Apache pelo Xampp; acesse a URL `http://localhost/aula_5/str_replace.php` e veja se o resultado é semelhante ao da Figura 5.
+Copie o código para a função `request_post()`. Salve e execute o arquivo.
 
-| ![Figura 5 - str_replace](/aulas/aula-5/img/figura_5.png) | 
-|:--:| 
-| **Figura 5 - str_replace** |
+Vamos obter uma saída semelhante a essa:
+
+```
+Pão de Queijo
+<br>Hll Wrld f PHP
+<br>você comeria pizza, cerveja, e sorvete todos os dias.
+```
+
+Apague o conteúdo do método ``request_post`` e salve o arquivo.
 
 Para mais detalhes sobre a função, consulte: 
 - [Manual do PHP - str_replace](http://php.net/manual/pt_BR/function.str-replace.php)
