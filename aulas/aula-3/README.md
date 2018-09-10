@@ -212,9 +212,139 @@ array(
   key2  => value,
   key3  => value
 )
+
+ou 
+
+$array = [
+    "foo" => "bar",
+    "bar" => "foo",
+];
 ```
 
-...
+Podemos acessar os valores de um array através de suas chaves ou indexadores.
 
+```php
+echo($array["foo"]);
+echo($array["bar"]);
+```
 
+Utilizando indexadores:
 
+```
+$array = ["bar", "foo"];
+		
+echo($array[0]);
+echo '<br>', $array[1];
+```
+
+A linguagem PHP nos permite operações básicas de hashtable em um vetor comum. Abaixo são apresentadas algumas de suas funções:
+
+```
+$arr = array(5 => 1, 12 => 2);
+var_dump($arr);
+
+$arr[] = 56;    // Isto é o mesmo que $arr[13] = 56;
+		// nesse ponto do script
+var_dump($arr);
+
+$arr["x"] = 42; // Isto acrescenta um novo elemento
+		// para o array com a chave "x"
+var_dump($arr);
+
+unset($arr[5]); // Isto remove um elemento do array
+var_dump($arr);
+
+unset($arr);    // E isto apaga todo o array
+@var_dump($arr);
+```
+Arrays multidimensionais:
+
+```
+$array = array(
+  "foo" => "bar",
+  42    => 24,
+  "multi" => array(
+      "dimensional" => array(
+          "array" => "foo"
+       )
+  )
+);
+		
+var_dump($array["foo"]);
+var_dump($array[42]);
+var_dump($array["multi"]["dimensional"]["array"]);
+```
+
+Percorrendo, apagando e reindexando arrays:
+
+```
+// Criando um array normal
+$array = array(1, 2, 3, 4, 5);
+print_r($array);
+		
+// Acrescentando um item (note que a chave é 5, em vez de zero).
+$array[] = 6;
+print_r($array);
+
+// Agora apagando todos os itens, mas deixando o array intacto:
+foreach ($array as $i => $value) {
+    unset($array[$i]);
+}
+print_r($array);
+		
+// Acrescentando um item (note que a chave é 5, em vez de zero).
+$array[] = 6;
+print_r($array);
+
+// Reindexando:
+$array = array_values($array);
+$array[] = 7;
+print_r($array);
+
+// outras formas comuns
+$array = array(1, 2, 3, 4, 5);
+print_r($array);
+		
+for($i = 0; $i < count($array); $i++)
+    echo " - ", $array[$i];
+		
+echo("<br>");
+$i = 0;
+while($i < count($array)){
+    echo " - ", $array[$i++];
+}
+```
+
+Acessando parâmetros como arrays (POST):
+
+```
+$array = $_POST;
+print_r($array);
+		
+foreach ($array as $i => $value) {
+	echo "<br>", $value;
+}
+```
+
+Acessando parâmetros como arrays (GET):
+
+```
+$array = $_GET;
+print_r($array);
+		
+foreach ($array as $i => $value) {
+    echo "<br>", $value;
+}
+```
+Demais tipos:
+
+```
+parse_str(file_get_contents("php://input"), $array);
+print_r($array);
+		
+foreach ($array as $i => $value) {
+    echo "<br>", $value;
+}
+```
+
+Salve o script. Continuaremos a programação das requisições na próxima aula.
