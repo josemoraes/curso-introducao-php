@@ -348,3 +348,7 @@ foreach ($array as $i => $value) {
 ```
 
 Salve o script. Continuaremos a programação das requisições na próxima aula.
+
+Para mais detalhes sobre os arrays, consulte: [Manual do PHP - Arrays](http://www.php.net/manual/pt_BR/language.types.array.php)
+
+
