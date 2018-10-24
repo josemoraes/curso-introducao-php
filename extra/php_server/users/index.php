@@ -1,6 +1,6 @@
 <?php
 	// Define o "Content-Type" nos headers do response
-	header('Content-Type: application/json');
+	header('Content-Type: application/json; charset=utf-8');
 	// Variáveis Gerais
 	require '../Miscellaneous.php';
 	// Acessa o método de requisição informado
