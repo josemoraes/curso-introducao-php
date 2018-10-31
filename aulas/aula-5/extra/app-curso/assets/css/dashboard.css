@@ -1,0 +1,320 @@
+html{ 
+	height: 100%; 
+}
+
+html *{
+	/* 
+	* Essa regra permite que o padding (preenchimento) de todos os elementos 
+	* filhos do elemento HTML, não interfiram no largura, ou altura, e mantém
+	* o preenchimento (padding), contido no próprio elemento.
+	*/
+	box-sizing: border-box; 
+}
+
+body{
+	/* 
+	* Por padrão, o elemento BODY vem com margin e padding pré-definido. É uma convenção
+	* "zerar" esses valores para que não interfiram no layout da página.
+	*/
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	background-color: #f5f5f5;
+	font-family: sans-serif;
+	position: relative;
+	height: inherit;
+}
+
+header{
+	position: relative;
+	width: 100%;
+	background-color: #2a7cbb;
+	height: 60px;
+}
+
+.container{
+	width: 1200px;
+	margin: 0 auto;
+	float: none;
+	clear: both;
+	padding: 0 15px;
+}
+
+.right{ 
+	float: right; 
+}
+
+.left{
+	float: left;
+}
+
+header nav{
+	height: inherit;
+}
+
+nav ul{
+	padding: 0;
+	margin: 0;
+}
+
+nav ul li {
+	display: inline-block;
+	list-style: none;
+	line-height: 60px;
+	color: #FFF;
+	padding: 0 15px;
+}
+
+nav ul li a{
+	color: #FFF;
+	text-decoration: none;
+	padding: 10px 0 10px;
+	border-top: 1.5px solid transparent;
+	border-bottom: 1.5px solid transparent;
+	transition: .5s;
+}
+
+nav ul li a:focus,
+nav ul li a:hover{
+	border-color: #FFF;
+}
+
+nav ul li.logo,
+nav ul li h1.logo{
+	font-size: 2em;
+	text-transform: uppercase;
+	margin: 0;
+}
+
+.page-title{
+	text-transform: uppercase;
+	font-size: 1.5em;
+	color: #777;
+}
+
+form .form-field{
+	color: #333;
+	border: 2px solid #cdcdcd;
+	border-radius: .25em;
+	font-size: .9em;
+	width: 100%;
+	padding: .6em .8em;
+}
+
+main{
+	position: relative;
+	height: inherit;
+	overflow: hidden;
+}
+
+main section{
+	width: 33%;
+	padding: 10px;
+	margin: 0;
+	border-right: 5px solid #777;
+	float: left;
+	height: 100%;
+}
+
+main section:nth-last-child(1){
+	border-right: none;
+}
+
+h2.board-title {
+	text-align: center;
+	margin: 0 0 10px;
+	padding-bottom: 10px;
+	text-transform: uppercase;
+	font-size: 1.2em;
+	border-bottom: 3px solid #777;
+	color: #777;
+}
+
+.dashboard section .contents{
+	width: 100%;
+	height: 95%;
+	overflow: auto;
+}
+
+.btn{
+	text-decoration: none;
+	color: #fff;
+	background-color: #26a69a;
+	text-align: center;
+	letter-spacing: .5px;
+	-webkit-transition: background-color .2s ease-out;
+	transition: background-color .2s ease-out;
+	cursor: pointer;
+	font-size: 14px;
+	border: none;
+	border-radius: 2px;
+	display: inline-block;
+	height: 36px;
+	line-height: 36px;
+	padding: 0 16px;
+	text-transform: uppercase;
+	vertical-align: middle;
+	-webkit-tap-highlight-color: transparent;
+	box-shadow: 0 3px 3px 0 rgba(0,0,0,0.14), 0 1px 7px 0 rgba(0,0,0,0.12), 0 3px 1px -1px rgba(0,0,0,0.2);
+}
+
+
+.btn:focus, .btn:hover{
+	background-color: #2bbbad;
+}
+
+.btn.delete{
+	background-color: #f44336;
+}
+
+.btn.delete:hover, .btn.delete:focus{
+	background-color: #ef5350;
+}
+
+.card{
+	border-radius: 2px;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+	margin-bottom: 15px;
+	background-color: #fff9c4;
+}
+
+.card .card-header{
+	padding: 15px 24px;
+}
+
+.card .card-header h3{
+	margin: 0;
+	font-weight: bolder;
+	font-size: 1.2em;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.card .card-header .prazo{
+	font-size: .75em;
+	display: block;
+	line-height: 25px;
+}
+
+.card .card-content{
+	padding: 15px 24px;
+}
+
+.card .card-content p{
+	font-size: 1em;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.card .card-footer{
+	background-color: inherit;
+	border-top: 1px solid rgba(160,160,160,0.2);
+	position: relative;
+	padding: 16px 24px;
+}
+
+.card .card-footer form{ display: inline-block; }
+
+
+footer{
+	position: relative;
+	bottom: 0;
+	width: 100%;
+	height: 60px;
+	background-color: #3e4147;
+	color: #FFF;
+	padding-top: 25px;
+	text-align: center;
+}
+
+/* Toast */
+.toast {
+	visibility: hidden; /* Hidden by default. Visible on click */
+	min-width: 250px; /* Set a default minimum width */
+	margin-left: -125px; /* Divide value of min-width by 2 */
+	background-color: #333; /* Black background color */
+	color: #fff; /* White text color */
+	text-align: center; /* Centered text */
+	border-radius: 2px; /* Rounded borders */
+	padding: 16px; /* Padding */
+	position: fixed; /* Sit on top of the screen */
+	z-index: 1; /* Add a z-index if needed */
+	left: 45%; /* Center the hayamax-alert */
+	bottom: 100px; /* 30px from the bottom */
+}
+
+/* Show the hayamax-alert when clicking on a button (class added with JavaScript) */
+.toast.show {
+	visibility: visible; /* Show the hayamax-alert */
+
+/* Add animation: Take 0.5 seconds to fade in and out the hayamax-alert. 
+However, delay the fade out process for 2.5 seconds */
+-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+.toast .close{
+	padding: 0 5px;
+	margin-left: 15px;
+	color: #F00;
+	cursor: pointer;
+	float: right;
+}
+
+.modal{
+	position: fixed;
+	z-index: 999;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #585858d4;
+	display: none;
+}
+
+.modal-wrapper{
+	max-width: 500px;
+	width: 100%;
+	padding: 25px;
+	float: none;
+	margin: 20px auto 0;
+	background-color: #FFF;
+	border-radius: 2px;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+}
+
+.modal .page-title{
+	text-align: center;
+}
+
+.modal form input,
+.modal form textarea,
+.modal form select{
+	margin-bottom: 20px;
+}
+
+.modal form label{
+	font-size: .85em;
+	color: #777;
+}
+
+.modal form .btn{
+	margin: 0 auto;
+	float: none;
+	display: block;
+	clear: both;
+}
+
+.modal .close{
+	position: absolute;
+	top: 15px;
+	right: 40px;
+	font-size: 3em;
+	color: #FFF;
+	cursor: pointer;
+}
