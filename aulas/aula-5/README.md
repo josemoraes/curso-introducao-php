@@ -189,3 +189,12 @@ header('Location: http://appcurso.local/index.php');
 ``` 
 
 Como você deve ter percebido, chamamos a função `session_unset` que limpa todos os dados da sessão e em seguida chamamos `session_destroy` para "destruir" a variável de sessão; na sequência, redirecionamos para a página de login (index.php).
+
+
+## Exercício para o Feriadão
+
+Como nossas aulas possuem um ritmo acelerado, e pouco tempo para desenvolver atividades em sala, é muito importante ter desafios para treinar.
+Para esse propósito, sugiro que realizem a seguinte atividade:
+- Criar uma página, ou modal que apresente as informações do usuário `logado`, ou seja: nome e e-mail;
+
+O objetivo da atividade é verificar se vocês conseguem utilizar arrays, gerenciar sessão, e de quebra, ver como está a intimidade de cada um quanto à HTML e CSS. 
