@@ -1,11 +1,3 @@
-<?php
-session_start();
-if(!isset($_SESSION['user'])){
-	header('Location: http://localhost/app-curso/index.php');
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

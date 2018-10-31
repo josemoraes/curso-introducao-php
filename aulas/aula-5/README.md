@@ -79,7 +79,7 @@ public function doPost($data = [], $header = [])
 	curl_setopt($ch,CURLOPT_POST,count($data));
 	curl_setopt($ch,CURLOPT_POSTFIELDS,$fields);
 	
-	$result['result'] 	= json_decode(utf8_encode(trim(curl_exec($ch))), false); //Executa a requisição e decodifica o JSON para o formato UTF-8
+	$result['result'] 	= json_decode(trim(curl_exec($ch))); //Executa a requisição e decodifica o JSON
 	$result['code']		= curl_getinfo($ch, CURLINFO_HTTP_CODE);
 	curl_close($ch); //Fecha a conexão
 

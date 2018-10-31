@@ -28,11 +28,11 @@ jQuery(function(){
 	* e apenas é realizada a submissão do formulário, se o usuário
 	* clicar em 'OK' no popup de confirmação.
 	*/
-	jQuery('form.delete-task .btn.delete').click(function(evento){
+	/*jQuery('form.delete-task .btn.delete').click(function(evento){
 		evento.preventDefault();
 		var form = jQuery(this).parent();
 		if(confirm('Você confirma a exclusão dessa tarefa?')){
 			form.submit();
 		}
-	});
+	});*/
 });
