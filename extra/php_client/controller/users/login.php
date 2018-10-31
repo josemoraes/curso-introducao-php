@@ -10,7 +10,7 @@ $resposta 			= $serverRequest->doPost($dadosDoFormulario);
 
 switch ($resposta['code']) {
 	case 200:
-		$dados = json_decode($resposta['result']);
+		$dados = $resposta['result'];
 		session_start(); # Inicializo a sessão
 		$_SESSION['user']['tx_token'] 	= $dados->tx_token;
 		$_SESSION['user']['tx_name'] 	= $dados->tx_name;

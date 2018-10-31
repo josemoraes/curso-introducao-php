@@ -14,7 +14,7 @@
 </head>
 <body>
 	<section class="container">
-		<?php if(isset($_GET['msg'])): ?>
+		<?php if(isset($_GET['msg']) && !empty($_GET['msg'])): ?>
 			<div class="toast show"><?php echo $_GET['msg']; ?> <span class="close">X</span></div>
 		<?php endif; ?>
 		<fieldset id="form-login">

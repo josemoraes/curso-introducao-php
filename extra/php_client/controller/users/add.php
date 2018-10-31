@@ -5,6 +5,6 @@ include_once "../../model/Request.php"; # Importo a classe, para criar objeto de
 $dadosDoFormulario 	= $_POST; 
 $serverRequest 		= new Request('http://appserver.local/users/');
 
-$resposta 			= $serverRequest->doPost($dadosDoFormulario);
+$resposta 			= $serverRequest->doPost($dadosDoFormulario)['result'];
 
-header('Location: http://appcurso.local/index.php?msg='.$resposta['result']->tx_message.'');
+header('Location: http://appcurso.local/index.php?msg='.$resposta->tx_message);

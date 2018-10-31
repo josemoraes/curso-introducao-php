@@ -219,6 +219,8 @@ h2.board-title {
 	padding: 16px 24px;
 }
 
+.card .card-footer form{ display: inline-block; }
+
 
 footer{
 	position: relative;
@@ -262,6 +264,7 @@ animation: fadein 0.5s, fadeout 0.5s 2.5s;
 	margin-left: 15px;
 	color: #F00;
 	cursor: pointer;
+	float: right;
 }
 
 .modal{
