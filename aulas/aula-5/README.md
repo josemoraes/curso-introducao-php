@@ -45,7 +45,7 @@ include_once "../../model/Request.php"; # Importo a classe, para criar objeto de
 
 
 $dadosDoFormulario 	= $_POST; 
-$serverRequest 		= new Request('http://localhost/php_server/tasks/'); # Essa URL é definida pelo documento descritor da API
+$serverRequest 		= new Request('http://localhost/php_server/users/'); # Essa URL é definida pelo documento descritor da API
 
 $resposta 			= $serverRequest->doPost($dadosDoFormulario);
 
