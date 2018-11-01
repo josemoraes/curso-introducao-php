@@ -198,3 +198,14 @@ Para esse propósito, sugiro que realizem a seguinte atividade:
 - Criar uma página, ou modal que apresente as informações do usuário `logado`, ou seja: nome e e-mail;
 
 O objetivo da atividade é verificar se vocês conseguem utilizar arrays, gerenciar sessão, e de quebra, ver como está a intimidade de cada um quanto à HTML e CSS. 
+
+### Dicas para fazer o exercício
+
+- Crie na raíz do diretório `./app-curso` um arquivo chamado `perfil.php`;
+- Codifique o HTML;
+- Você pode utilizar algum arquivo de CSS já existente (`login.css`, ou `dashboard.css`) para manter o padrão visual;
+- Utilize a variável `$_SESSION` para capturar as informações do usuário;
+	- Para utilizar a variável `$_SESSION`, deve-se chamar a função `session_start()` no topo do arquivo;
+- Essa página deve ser possível ser acessada apenas se o usuário estiver LOGADO;
+
+> Quaisquer dúvidas, me contatem por e-mail ;)
