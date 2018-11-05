@@ -14,7 +14,7 @@ if(intval($response['code']) == 401)
 	session_destroy(); // Destrói a sessão
 	header('Location: http://appcurso.local/index.php?msg='.$msg);	
 }
-# False, significa que cada item, será tratado como objeto, não como array
+# Passo o resultado para uma variável mais intuitiva
 $tasks   = $response['result'];
 ?>
 
@@ -42,66 +42,58 @@ $tasks   = $response['result'];
 		<section id="do">
 			<h2 class="board-title">Para Fazer</h2>
 			<div class="contents">
-				<?php if (isset($tasks[0]->_id)): ?>
-					<?php foreach ($tasks as $to_do_task): ?>
-						<?php if ($to_do_task->ch_tag == 'todo'): ?>
-							<div class="card">
-								<div class="card-header"><h3><?php echo $to_do_task->tx_title; ?></h3><span class="prazo"><?php echo empty($to_do_task->dt_deadline) ? '' : date('d/m/Y \à\s H:i', $to_do_task->dt_deadline); ?></span></div>
-								<div class="card-content">
-									<p><?php echo $to_do_task->tx_description; ?></p>
-								</div>
-								<div class="card-footer">
-									<form action="controller/tasks/delete.php" method="POST" class="delete-task">
-										<input type="hidden" name="id_task" value="<?php echo $to_do_task->_id ?>" method="DELETE">
-										<button type="submit" class="btn delete">Excluir</button>
-									</form>
-									<a href="#" class="btn">Editar</a>
-								</div>
+				<?php foreach ($tasks as $to_do_task): ?>
+					<?php if (isset($to_do_task->_id) && $to_do_task->ch_tag == 'todo'): ?>
+						<div class="card">
+							<div class="card-header"><h3><?php echo $to_do_task->tx_title; ?></h3><span class="prazo"><?php echo empty($to_do_task->dt_deadline) ? '' : date('d/m/Y \à\s H:i', $to_do_task->dt_deadline); ?></span></div>
+							<div class="card-content">
+								<p><?php echo $to_do_task->tx_description; ?></p>
 							</div>
-						<?php endif ?>
-					<?php endforeach ?>
-				<?php endif ?>
+							<div class="card-footer">
+								<form action="controller/tasks/delete.php" method="POST" class="delete-task">
+									<input type="hidden" name="id_task" value="<?php echo $to_do_task->_id ?>" method="DELETE">
+									<button type="submit" class="btn delete">Excluir</button>
+								</form>
+							</div>
+						</div>
+					<?php endif ?>
+				<?php endforeach ?>
 			</div>
 		</section>
 		<section id="doing">
 			<h2 class="board-title">Fazendo</h2>
 			<div class="contents">
-				<?php if (isset($tasks[0]->_id)): ?>
-					<?php foreach ($tasks as $doing_task): ?>
-						<?php if ($doing_task->ch_tag == 'doing'): ?>
-							<div class="card">
-								<div class="card-header"><h3><?php echo $doing_task->tx_title; ?></h3><span class="prazo"><?php echo empty($doing_task->dt_deadline) ? '' : date('d/m/Y \à\s H:i', $doing_task->dt_deadline); ?></span></div>
-								<div class="card-content">
-									<p><?php echo $doing_task->tx_description; ?></p>
-								</div>
-								<div class="card-footer">
-									<form action="controller/tasks/delete.php" method="POST" class="delete-task">
-										<input type="hidden" name="id_task" value="<?php echo $doing_task->_id ?>" method="DELETE">
-										<button type="submit" class="btn delete">Excluir</button>
-									</form>
-									<a href="#" class="btn">Editar</a>
-								</div>
+				<?php foreach ($tasks as $doing_task): ?>
+					<?php if (isset($doing_task->_id) && $doing_task->ch_tag == 'doing'): ?>
+						<div class="card">
+							<div class="card-header"><h3><?php echo $doing_task->tx_title; ?></h3><span class="prazo"><?php echo empty($doing_task->dt_deadline) ? '' : date('d/m/Y \à\s H:i', $doing_task->dt_deadline); ?></span></div>
+							<div class="card-content">
+								<p><?php echo $doing_task->tx_description; ?></p>
 							</div>
-						<?php endif ?>
-					<?php endforeach ?>
-				<?php endif ?>
+							<div class="card-footer">
+								<form action="controller/tasks/delete.php" method="POST" class="delete-task">
+									<input type="hidden" name="id_task" value="<?php echo $doing_task->_id ?>" method="DELETE">
+									<button type="submit" class="btn delete">Excluir</button>
+								</form>
+							</div>
+						</div>
+					<?php endif ?>
+				<?php endforeach ?>
 			</div>
 		</section>
 		<section id="done">
 			<h2 class="board-title">Feito</h2>
 			<div class="contents">
-				<?php if (isset($tasks[0]->_id)): ?>
-					<?php foreach ($tasks as $done_task): ?>
-						<?php if ($done_task->ch_tag == 'done'): ?>
-							<div class="card">
-								<div class="card-header"><h3><?php echo $done_task->tx_title; ?></h3><span class="prazo"><?php echo empty($done_task->dt_deadline) ? '' : date('d/m/Y \à\s H:i', $done_task->dt_deadline); ?></span></div>
-								<div class="card-content">
-									<p><?php echo $done_task->tx_description; ?></p>
-								</div>
+				<?php foreach ($tasks as $done_task): ?>
+					<?php if (isset($done_task->_id) && $done_task->ch_tag == 'done'): ?>
+						<div class="card">
+							<div class="card-header"><h3><?php echo $done_task->tx_title; ?></h3><span class="prazo"><?php echo empty($done_task->dt_deadline) ? '' : date('d/m/Y \à\s H:i', $done_task->dt_deadline); ?></span></div>
+							<div class="card-content">
+								<p><?php echo $done_task->tx_description; ?></p>
 							</div>
-						<?php endif ?>
-					<?php endforeach ?>
-				<?php endif ?>
+						</div>
+					<?php endif ?>
+				<?php endforeach ?>
 			</div>
 		</section>
 	</main>
