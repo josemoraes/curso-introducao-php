@@ -201,7 +201,7 @@ echo json_encode(['msg'=>($resposta['result']->tx_message)]); return;
 Feito isso, você já deve ter o mecanismo de atualização de estado da tarefa funcionando perfeitamente.
 
 > *PARA MAIS INFORMAÇÕES*
-> (HTML5 Drag and Drop)[https://www.w3schools.com/html/html5_draganddrop.asp]
+> [HTML5 Drag and Drop](https://www.w3schools.com/html/html5_draganddrop.asp)
 
 
 ## Desafio extra
@@ -209,7 +209,7 @@ Feito isso, você já deve ter o mecanismo de atualização de estado da tarefa 
 Para completar o curso, nada melhor do que testar os seus conhecimentos. Para isso, sugerimos que: Desenvolva a atualização de data da tarefa;
 
 ### Dica para o desenvolvimento
-- Consulte o (documento descritor da API)[https://github.com/josemoraes/curso-introducao-php/blob/master/extra/documento-descritor-api.pdf] para entender como realizar a atualização;
+- Consulte o [documento descritor da API](https://github.com/josemoraes/curso-introducao-php/blob/master/extra/documento-descritor-api.pdf) para entender como realizar a atualização;
 - Faça testes com o Postman para ver como funciona a requisição;
 - Crie um modal que tenha um `input` do tipo `hidden` para guardar o ID da tarefa e um campo para informar a nova data;
 - Ao salvar ele deve enviar para um arquivo dentro de `controller/tasks` que fará a atualização da informação.
